@@ -25,7 +25,7 @@ A Python-based application designed to automatically classify, process, and extr
 
 ## File Structure
 
-
+```
 .
 ├── agent_manager.py # Initializes and manages Langchain agents
 ├── agents
@@ -42,7 +42,7 @@ A Python-based application designed to automatically classify, process, and extr
 └── tools
 ├── constants.py # Defines constant labels for classification
 └── memory_interface.py # Handles interaction with the SQLite memory database
-
+```
 ## Technologies Used
 
 -   **Python 3.x**
@@ -177,5 +177,3 @@ python main.py data/complaint_email.txt data/invoice_submission.json data/new_re
 ```
 
 
-Note on main.py Argument Parsing:
-The current main.py script defines parser.add_argument('files', nargs='+', ...) for file inputs. The internal logic for handling args.file (singular) and args.dir appears to be from a previous iteration or an incomplete feature, as these arguments are not defined in the ArgumentParser. The usage instructions above reflect the correctly defined files argument.
