@@ -1,11 +1,11 @@
 from langchain.chains.llm import LLMChain
 from langchain.prompts import PromptTemplate
 from tools.memory_interface import log_to_memory
-from langchain.llms import huggingface_pipeline
+from langchain.llms.huggingface_pipeline import HuggingFacePipeline
 from transformers import pipeline
 
 hf_pipeline = pipeline("text2text-generation", model="google/flan-t5-large")
-llm = huggingface_pipeline(pipeline=hf_pipeline)
+llm = HuggingFacePipeline(pipeline=hf_pipeline)
 
 prompt = PromptTemplate(
     input_variables=["json"],  

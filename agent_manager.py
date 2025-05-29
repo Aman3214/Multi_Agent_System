@@ -1,11 +1,11 @@
 from langchain.agents import initialize_agent, Tool
-from langchain.llms import huggingface_pipeline
+from langchain.llms.huggingface_pipeline import HuggingFacePipeline
 from transformers import pipeline
 from agents.emailAgent import handle_email
 from agents.jsonAgent import handle_json 
 
 hf_pipeline = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
-llm = huggingface_pipeline(pipeline=hf_pipeline)
+llm = HuggingFacePipeline(pipeline=hf_pipeline)
 
 tools = [
     Tool(
