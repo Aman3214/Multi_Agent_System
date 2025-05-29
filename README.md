@@ -59,8 +59,8 @@ A Python-based application designed to automatically classify, process, and extr
 
 1.  **Clone the repository (if applicable):**
     ```bash
-    git clone <your-repository-url>
-    cd <your-project-directory>
+    git clone https://github.com/Aman3214/Multi_Agent_Systems
+    cd multiAgent # change to your project repo
     ```
 
 2.  **Create a virtual environment (recommended):**
