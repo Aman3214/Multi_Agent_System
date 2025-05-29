@@ -1,0 +1,29 @@
+{
+    "invoice_id": "INV-9245",
+    "date": "2025-05-20",
+    "vendor": {
+      "name": "TechNova Solutions",
+      "address": "112 Market Street, San Francisco, CA",
+      "email": "billing@technova.io"
+    },
+    "customer": {
+      "name": "FlowBit AI",
+      "address": "501 Industrial Ave, Austin, TX",
+      "contact_email": "accounts@flowbitai.com"
+    },
+    "items": [
+      {
+        "description": "Custom AI Model Development",
+        "quantity": 1,
+        "unit_price": 3500.00
+      },
+      {
+        "description": "API Integration Support (5 hrs)",
+        "quantity": 5,
+        "unit_price": 120.00
+      }
+    ],
+    "total_amount": 4100.00,
+    "payment_due": "2025-06-05"
+  }
+  

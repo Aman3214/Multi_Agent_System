@@ -1,0 +1,14 @@
+From: samuel.reed@frontexlabs.com
+To: support@flowbitai.com
+Subject: Urgent: Issue with Invoice System
+
+Hi Team,
+
+We’ve encountered repeated crashes with your invoice processing module during batch uploads. This has disrupted our accounting workflow.
+
+Error logs are attached. Please prioritize and get back to us within 24 hours.
+
+Regards,  
+Samuel Reed  
+Technical Lead – Automation  
+Frontex Labs

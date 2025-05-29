@@ -1,0 +1,5 @@
+transformers
+torch
+sqlite-utils
+python-magic
+langchain
