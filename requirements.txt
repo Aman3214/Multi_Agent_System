@@ -4,3 +4,4 @@ sqlite-utils
 python-magic
 langchain
 langchain-community
+openai

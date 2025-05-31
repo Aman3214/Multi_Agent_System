@@ -7,3 +7,5 @@ INTENT_LABELS = [
     "Regulation",
     "Other"
 ]
+
+API_KEY = ""

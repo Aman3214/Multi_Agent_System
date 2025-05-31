@@ -1,7 +1,10 @@
 from transformers import pipeline
 from tools.constants import INTENT_LABELS, FORMAT_LABELS
 from tools.memory_interface import log_to_memory
-from agent_manager import agent
+from agents.emailAgent import handle_email
+from agents.jsonAgent import handle_json
+# from agent_manager import agent
+# import json
 
 classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
 
@@ -27,19 +30,24 @@ def classify_input(filename,conversation_id, content):
         filename=filename,
         format=format_,
         intent=intent,
-        extracted="{}",
+        extracted_info="{}",
         agent="Classifier"
     )
-
+    
     input_payload = {
         "filename": filename,
         "conversation_id": conversation_id,
         "content": content
     }
+    print(f"[Classifier] Processed {filename} | Intent: {intent} | Format: {format_}")
+
+       
     if format_ == "Email":
-        agent.run("Use the EmailAgent to handle this email",inputs=input_payload)
+        print("[Classifier] Invoking EmailAgent")
+        handle_email(**input_payload)
     elif format_ == "JSON":
-        agent.run("Use the JSONAgent to process this structed data",inputs=input_payload)
+        print("[Classifier] Invoking JSONAgent")
+        handle_json(**input_payload)
     else:
         print("Unsupported format")
     
@@ -47,4 +55,3 @@ def classify_input(filename,conversation_id, content):
         "intent": intent,
         "format": format_
     }
-
