@@ -13,6 +13,7 @@ A Python-based application designed to automatically classify, process, and extr
 - [Example Data](#example-data)
 - [Sample Outputs](#sample_outputs)
 
+[Watch Demo Video](https://youtu.be/u5uT9aF61tk)
 
 ## Features
 
