@@ -27,7 +27,6 @@ A Python-based application designed to automatically classify, process, and extr
 
 ```
 .
-├── agent_manager.py # Initializes and manages Langchain agents
 ├── agents
 │ ├── classifier.py # Handles input classification (format and intent)
 │ ├── emailAgent.py # Agent logic for processing email files
@@ -40,6 +39,7 @@ A Python-based application designed to automatically classify, process, and extr
 ├── main.py # Main script to run the document processing
 ├── requirements.txt # Python dependencies
 └── tools
+├── memory.db # temp file generated on running the main.py file 
 ├── constants.py # Defines constant labels for classification
 └── memory_interface.py # Handles interaction with the SQLite memory database
 ```
@@ -111,11 +111,6 @@ To view logs from the database for a specific conversation ID (or all logs if ID
 You can adapt the print_logs function in tools/memory_interface.py to be callable from a separate script or add CLI options to main.py for this. For example, to add a quick way to view logs, you could modify memory_interface.py to be runnable:
 
 # tools/memory_interface.py (add at the end)
-    if __name__ == '__main__':
-        import sys
-        conv_id = sys.argv[1] if len(sys.argv) > 1 else None
-        print_logs(conv_id)
-
 
 Then run: python tools/memory_interface.py [optional_conversation_id]
 
@@ -129,15 +124,9 @@ agents/classifier.py reads the file content.
 
 It detects the file format (Email, JSON, PDF) based on extension or using a zero-shot-classification model (facebook/bart-large-mnli).
 
-It classifies the intent of the content using the same model and predefined labels (tools/constants.py).
+It classifies the intent of the content using the same model and predefined labels (tools/constants.py) and then routes the control to the appropriate agent.
 
 This initial classification is logged to memory.db.
-
-**Agent Dispatch:**
-
-Based on the detected format, classifier.py invokes the main Langchain agent initialized in agent_manager.py.
-
-This "router" agent (a zero-shot-react-description agent) decides which specialized tool (agent) to use: handle_email or handle_json.
 
 **Specialized Processing:**
 
@@ -175,5 +164,8 @@ Run the processor with these files:
 ```bash
 python main.py data/complaint_email.txt data/invoice_submission.json data/new_regulation.json data/rfq_email.txt
 ```
-
-
+or simply
+```bash
+python main.py data/
+```
+to process all the files in the directory

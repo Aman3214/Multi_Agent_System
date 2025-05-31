@@ -55,3 +55,8 @@ def print_logs(conversation_id=None):
     logs = read_logs(conversation_id)
     for log in logs:
          print(f"[{log[-1]}] ({log[1]}) {log[5]} | {log[3]} -> {log[4]} [{log[6]}]")
+
+if __name__ == '__main__':
+        import sys
+        conv_id = sys.argv[1] if len(sys.argv) > 1 else None
+        print_logs(conv_id)
