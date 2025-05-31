@@ -62,5 +62,5 @@ def handle_json(filename, conversation_id, content):
         extracted_info=result,
         agent="JSONAgent"
     )
-    print(f"[JSONAgent] Processed {filename} | Info : {result}")
+    print(f"[JSONAgent] Processed {filename} ")
     

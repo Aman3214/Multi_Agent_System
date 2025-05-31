@@ -55,5 +55,5 @@ def handle_email(filename, conversation_id, content):
         extracted_info=result,
         agent="EmailAgent"
     )
-    print(f"[EmailAgent] Processed {filename} | Info : {result}")
+    print(f"[EmailAgent] Processed {filename} ")
     
