@@ -11,6 +11,8 @@ A Python-based application designed to automatically classify, process, and extr
 - [Usage](#usage)
 - [How It Works](#how-it-works)
 - [Example Data](#example-data)
+- [Sample Outputs](#sample_outputs)
+
 
 ## Features
 
@@ -26,22 +28,27 @@ A Python-based application designed to automatically classify, process, and extr
 ## File Structure
 
 ```
-.
+├── README.md
 ├── agents
-│ ├── classifier.py # Handles input classification (format and intent)
-│ ├── emailAgent.py # Agent logic for processing email files
-│ └── jsonAgent.py # Agent logic for processing JSON files
-├── data # Sample data files for testing
-│ ├── complaint_email.txt
-│ ├── invoice_submission.json
-│ ├── new_regulation.json
-│ └── rfq_email.txt
-├── main.py # Main script to run the document processing
-├── requirements.txt # Python dependencies
+│   ├── classifier.py
+│   ├── emailAgent.py
+│   └── jsonAgent.py
+├── data
+│   ├── complaint_email.txt
+│   ├── invoice_submission.json
+│   ├── new_regulation.json
+│   └── rfq_email.txt
+├── main.py
+├── memory.db
+├── requirements.txt
+├── sample_outputs
+│   ├── main_data_dir.png
+│   └── memory_interface.png
 └── tools
-├── memory.db # temp file generated on running the main.py file 
-├── constants.py # Defines constant labels for classification
-└── memory_interface.py # Handles interaction with the SQLite memory database
+    ├── constants.py
+    └── memory_interface.py
+
+
 ```
 ## Technologies Used
 
@@ -53,7 +60,7 @@ A Python-based application designed to automatically classify, process, and extr
     -   `google/flan-t5-large` for text-to-text generation tasks (extraction, normalization).
 -   **PyTorch**: As a backend for Hugging Face Transformers.
 -   **SQLite**: For the `memory.db` logging database.
--   **python-magic**: (Listed in `requirements.txt`, though not explicitly used in the provided Python files for format detection. Current format detection is extension-based or uses zero-shot classification).
+
 
 ## Setup
 
@@ -110,11 +117,11 @@ The agents (EmailAgent, JSONAgent) will print their results to the console.
 To view logs from the database for a specific conversation ID (or all logs if ID is omitted):
 You can adapt the print_logs function in tools/memory_interface.py to be callable from a separate script or add CLI options to main.py for this. For example, to add a quick way to view logs, you could modify memory_interface.py to be runnable:
 
-# tools/memory_interface.py (add at the end)
+**tools/memory_interface.py** 
 
 Then run: python tools/memory_interface.py [optional_conversation_id]
 
-**How It Works**
+## How It Works
 
 Input: The main.py script takes file paths as input.
 
@@ -148,7 +155,7 @@ This initial classification is logged to memory.db.
 
 - Logging: All significant steps and outcomes are logged to the memory.db SQLite database via tools/memory_interface.py, associated with a unique conversation_id.
 
-**Example Data**
+## Example Data
 
 The data/ directory contains sample files you can use for testing:
 
@@ -169,3 +176,13 @@ or simply
 python main.py data/
 ```
 to process all the files in the directory
+
+## sample_outputs
+
+This folder contains the sample terminal outputs for the processed input from the data directory
+
+- **main_data_dir.png** : This is the sample output on running the main file for the data folder
+
+- **memory_interface.png** : This is the sample output on running the tools/memory_interface.py file ie the stored results in th memory.db
+
+**Note:** The output may not be desirable due to the model used hence can be changed from the agents/ folder
